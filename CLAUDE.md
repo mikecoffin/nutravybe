@@ -37,18 +37,12 @@ No external CTA buttons, no affiliate links in the nav.
 - [x] Removed "Ignicell Comprar" CTA button from all pages (nav cleaned)
 - [x] All 49 HTML files committed and pushed to force Hostinger redeploy (Apr 2026)
 
-## Known Issue — Ignicell Button Still Showing on Live Site
-**Status:** Unresolved as of Apr 14 2026
-
-The live site (nutravybe.com) still shows a yellow "Ignicell Comprar" button in the navigation bar even after pushing clean files to GitHub.
-
-**Root cause:** The Hostinger git auto-deploy does NOT appear to be running. The HTML files on Hostinger were likely uploaded manually before the git integration was set up, and git pushes are not overwriting them.
-
-**Fix needed:**
-1. Go to Hostinger hPanel → Git
-2. Verify the auto-deploy webhook is active for the `main` branch
-3. Manually trigger a redeployment if available
-4. OR use Hostinger File Manager to manually delete/replace the old HTML files with the clean git versions
+## Hostinger Deployment Setup
+- **Primary domain on account:** segredodaproteinavegetal.com.br (Hostinger shows this in logs even for nutravybe.com)
+- **nutravybe.com document root:** `public_html/` (same root as primary domain — no subfolder)
+- **Git install path:** `public_html` (correct — deploys directly to nutravybe.com's root)
+- **Auto Deployment:** Must be toggled ON in hPanel → Git for pushes to auto-deploy
+- Build log shows "on segredodaproteinavegetal.com.br" — this is normal, it's just the account's primary domain label
 
 ## Content Notes
 - All articles are in Brazilian Portuguese
@@ -58,6 +52,6 @@ The live site (nutravybe.com) still shows a yellow "Ignicell Comprar" button in 
 - Canonical URLs point to `https://nutravybe.com/`
 
 ## What Still Needs To Be Done
-- [ ] Confirm Hostinger git auto-deploy is working (verify live site after next push)
-- [ ] Resolve Ignicell button on live site (see Known Issue above)
+- [ ] Enable Auto Deployment in hPanel → Git (toggle ON)
+- [ ] Confirm Ignicell button is gone after hard refresh / incognito (likely browser cache)
 - [ ] Add any additional articles if needed
